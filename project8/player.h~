@@ -1,0 +1,22 @@
+#include <iostream>
+#include <fstream>
+#include <string.h>
+#include "card.h"
+using namespace std;
+
+class player
+{
+	public:
+		player();
+		player(const player&);
+		~player();
+		card* getplayerhand();
+		friend ostream& operator<<(ostream&, player&);
+		friend ifstream& operator>>(ifstream&, player&);
+	
+	private:
+		float bet;
+		string name;
+		card* hand;
+};
+

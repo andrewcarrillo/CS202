@@ -1,0 +1,43 @@
+#include "player.h"
+#include <iostream>
+#include <fstream>
+#include <string.h>
+using namespace std;
+
+
+player:: player()
+	{
+		string name;
+		card* hand= new card[5];
+		bet = -1.0;
+	}
+player:: player(const player& copyplayer)
+	{
+		name= copyplayer.name;
+		hand= copyplayer.hand;
+		bet= copyplayer.bet;
+	}
+player:: ~player()
+	{
+		//delete()name;
+		delete[]hand;
+	}
+card* player:: getplayerhand()
+	{
+		return hand;
+	} 
+
+ostream& operator<<(ostream& display, player& copyplayer)
+	{
+		display<<copyplayer.name<<endl;
+		display<<copyplayer.bet<< endl;
+		display<<copyplayer.hand<<endl;
+		return display;
+	}
+ifstream& operator>>(ifstream& input, player& sourceplayer)
+	{
+		input>> sourceplayer.name;
+		input>> sourceplayer.bet;
+		
+	}
+

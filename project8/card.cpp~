@@ -1,0 +1,85 @@
+#include "card.h"
+#include <iostream>
+#include <fstream>
+#include <string.h>
+using namespace std;
+
+card:: card()
+	{
+		string suit;
+		string rank;
+		string location;
+		int value;
+	}
+card:: card(const card& copycard)
+	{
+		string suit;
+		string rank;
+		string location;
+		suit = copycard.suit;
+		rank = copycard.rank;
+		location = copycard.location;
+	}
+card:: ~card()
+	{
+		//delete[]suit;
+		//delete[]rank;
+		//delete[]location;
+	}
+card card:: operator=(const card& copycard)
+	{
+		suit=copycard.suit;
+		rank=copycard.rank;
+		value=copycard.value;
+		location=copycard.location;
+	}
+void card::setlocation(string source)
+	{
+		location = source;
+	}
+ostream& operator<<(ostream& display, card& displaycard)
+	{
+		display<< displaycard.suit<< endl;
+		display<< displaycard.rank<< endl;
+		display<< displaycard.value<< endl;
+		return display;
+	}
+ifstream& operator>>(ifstream& input, card &sourcecard)
+	{
+		input>> sourcecard.suit;
+		input>> sourcecard.rank;
+		input>> sourcecard.value;
+	}
+bool card:: operator>(const card &copycard) const
+	{
+		if(value>copycard.value)
+			{
+				return true;
+			}
+		else
+			{
+				return false;
+			}
+	}
+bool card:: operator<(const card &copycard) const
+	{
+		if(value<copycard.value)
+			{
+				return true;
+			}
+		else
+			{
+				return false;
+			}
+	}
+bool card:: operator==(const card &copycard) const
+	{
+		if(suit == copycard.suit)
+			{
+				return true;
+			}
+		else
+			{
+				return false;
+			}
+	}

@@ -1,0 +1,13 @@
+all: main
+
+main: main.cpp card.o player.o
+	g++ main.cpp card.o player.o -o main.out
+
+card.o: card.cpp
+	g++ -c card.cpp
+
+player.o: player.cpp
+	g++ -c player.cpp
+
+clean:
+	rm -rf *.o main.out
